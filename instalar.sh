@@ -1,12 +1,22 @@
 #!/bin/sh
 cd "$(dirname "$0")" || exit 1
 echo "Instalando o cliente de ingressos..."
-if ! python3 -m venv .venv; then
+
+OPCOES_VENV=""
+if [ -n "$TERMUX_VERSION" ] || echo "$PREFIX" | grep -q "com.termux"; then
+  # Android (Termux): usa o gRPC ja compilado do Termux, sem compilar nada.
+  echo "Android (Termux) detectado."
+  pkg install -y python python-grpcio || exit 1
+  OPCOES_VENV="--system-site-packages"
+fi
+
+rm -rf .venv
+if ! python3 -m venv $OPCOES_VENV .venv; then
   echo ""
   echo "ERRO: nao foi possivel criar o ambiente."
   echo "No Ubuntu/Debian, rode: sudo apt install python3 python3-venv"
   exit 1
 fi
-.venv/bin/python -m pip install -r requirements.txt || exit 1
+.venv/bin/python -m pip install --prefer-binary -r requirements.txt || exit 1
 echo ""
-echo "Pronto! Agora rode: ./iniciar.sh"
+echo "Pronto! Agora rode: sh iniciar.sh"

@@ -65,6 +65,33 @@ sh iniciar.sh
 
 Digite o IP do servidor e aperte Enter.
 
+---
+
+## Instalação no Android
+
+**1.** Instale o app **Termux** pelo F-Droid (https://f-droid.org). A versão da Play Store é antiga.
+
+**2.** Abra o Termux e rode:
+
+```bash
+pkg update
+pkg install git
+git clone https://github.com/BeatrizGama/trabalho-ingressos-cliente.git
+cd trabalho-ingressos-cliente
+sh instalar.sh
+```
+
+**3.** Para usar:
+
+```bash
+sh iniciar.sh
+```
+
+> O `instalar.sh` percebe que está no Android e usa o gRPC já pronto do Termux,
+> então a instalação leva só alguns minutos.
+
+---
+
 > Dica: dá para passar o IP direto, sem a pergunta: `sh iniciar.sh 192.168.0.15`
 > (no Windows: `iniciar.bat 192.168.0.15`).
 
