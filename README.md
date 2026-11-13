@@ -133,3 +133,7 @@ digitando o número e apertando Enter:
 **Erro de certificado (SSL) ao instalar**
 - No Windows, o `instalar.bat` já tenta resolver sozinho. Se continuar,
   pode ser o antivírus bloqueando: tente em outra rede.
+
+---
+
+**Autor:** Beatriz Gama
